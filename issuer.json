@@ -1,8 +1,1 @@
-{
-  "@context": "https://w3id.org/openbadges/v2",
-  "type": "Issuer",
-  "id": "https://sismadi.com/badges/issuer.json",
-  "name": "PT. Sismadi Inovasi Digital",
-  "url": "https://sismadi.com",
-  "email": "admin@sismadi.com"
-}
+{'@context': 'https://w3id.org/openbadges/v2', 'type': 'Issuer', 'id': 'https://sismadi.github.io/cert/issuer.json', 'name': 'PT. Sismadi Inovasi Digital', 'url': 'https://sismadi.com', 'email': 'admin@sismadi.com'}

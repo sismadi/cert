@@ -1,1 +1,1 @@
-Content-Type: application/json
+{'@context': 'https://w3id.org/openbadges/v2', 'type': 'BadgeClass', 'id': 'https://sismadi.github.io/cert/badge-class.json', 'name': 'DonatJS Starter', 'description': 'Badge ini diberikan kepada peserta yang menyelesaikan pelatihan DonatJS.', 'image': 'https://sismadi.github.io/cert/91606b44-8f7a-4d71-b20c-8982b4a7ff49.png', 'criteria': {'narrative': 'Selesaikan seluruh modul dan ujian akhir dari pelatihan DonatJS.'}, 'issuer': 'https://sismadi.github.io/cert/issuer.json'}
