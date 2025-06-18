@@ -1,24 +1,24 @@
 {
   "@context": "https://w3id.org/openbadges/v2",
   "type": "Assertion",
-  "id": "https://example.org/assertions/91606b44-8f7a-4d71-b20c-8982b4a7ff49",
+  "id": "https://sismadi.com/badges/donatjs-9160.json",
   "recipient": {
     "type": "email",
     "hashed": false,
-    "identity": "youremail@example.com"
+    "identity": "siswa@sismadi.com"
   },
   "issuedOn": "2025-06-18T00:00:00Z",
   "badge": {
-    "id": "https://example.org/badges/donatjs-badge",
+    "id": "https://sismadi.com/badges/donatjs-badge.json",
     "type": "BadgeClass",
     "name": "DonatJS Starter",
     "description": "Badge ini diberikan kepada peserta yang telah menyelesaikan pelatihan DonatJS.",
-    "image": "https://sismadi.github.io/cert/badge.png",
+    "image": "https://sismadi.com/badges/91606b44-8f7a-4d71-b20c-8982b4a7ff49.png",
     "criteria": {
-      "narrative": "Menyelesaikan seluruh modul DonatJS dan lulus evaluasi akhir."
+      "narrative": "Menyelesaikan seluruh modul DonatJS dan lulus ujian akhir."
     },
     "issuer": {
-      "id": "https://sismadi.github.io/cert/issuer.json",
+      "id": "https://sismadi.com/badges/issuer.json",
       "type": "Issuer",
       "name": "PT. Sismadi Inovasi Digital",
       "url": "https://sismadi.com",
