@@ -40,6 +40,7 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script>
     async function verifikasiSertifikat() {
       const params = new URLSearchParams(window.location.search);
@@ -69,9 +70,16 @@
               <p class="italic text-sm text-gray-600">Ditandatangani secara digital oleh:</p>
               <p class="font-semibold text-md mt-1">Dr. Sismadi, M.Kom</p>
               <p class="text-sm">Direktur Sertifikasi Digital</p>
-              <img src="signature.png" alt="Tanda Tangan Digital" class="mt-2 w-32 h-auto">
+              <div id="qrcode" class="mt-2"></div>
             </div>
           `;
+
+          // Generate QR code
+          const qrData = `https://sismadi.github.io/cert/verify.html?id=${found.id}`;
+          QRCode.toCanvas(document.getElementById('qrcode'), qrData, function (error) {
+            if (error) console.error(error);
+          });
+
           printBtnContainer.classList.remove('hidden');
         } else {
           resultDiv.innerHTML = '<p class="text-red-600">❌ Sertifikat tidak ditemukan.</p>';
