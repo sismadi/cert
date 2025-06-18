@@ -9,13 +9,13 @@
   },
   "issuedOn": "2025-06-18T00:00:00Z",
   "badge": {
-    "id": "https://sismadi.github.io/cert/badge.json",
+    "id": "https://sismadi.github.io/cert/badge-class.json",
     "type": "BadgeClass",
     "name": "DonatJS Starter",
-    "description": "Badge ini diberikan kepada peserta yang telah menyelesaikan pelatihan DonatJS.",
+    "description": "Badge ini diberikan kepada peserta yang menyelesaikan pelatihan DonatJS.",
     "image": "https://sismadi.github.io/cert/badge.png",
     "criteria": {
-      "narrative": "Menyelesaikan seluruh modul DonatJS dan lulus ujian akhir."
+      "narrative": "Selesaikan seluruh modul dan ujian akhir dari pelatihan DonatJS."
     },
     "issuer": {
       "id": "https://sismadi.github.io/cert/issuer.json",
