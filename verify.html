@@ -29,7 +29,7 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
   <div class="bg-white p-8 rounded-xl shadow-lg max-w-xl w-full text-center print:max-w-full print:rounded-none" id="verifikasi-container">
-    <img src="logo.png" alt="Logo Institusi" class="mx-auto mb-4 w-24 h-auto print:w-32">
+    <img src="logo.png" alt="Logo Institusi" class="mx-auto mb-4 w-24 h-auto print:w-32" onerror="this.style.display='none'">
     <h1 class="text-2xl font-bold mb-4">Verifikasi Sertifikat</h1>
     <div id="result" class="text-lg"></div>
     <div id="printBtnContainer" class="mt-4 hidden">
@@ -71,10 +71,10 @@
               <p class="font-semibold text-md mt-1">Dr. Sismadi, M.Kom</p>
               <p class="text-sm">Direktur Sertifikasi Digital</p>
               <div id="qrcode" class="mt-2"></div>
+              <p class="text-xs text-gray-500 mt-2">Pindai kode QR untuk memverifikasi</p>
             </div>
           `;
 
-          // Generate QR code
           const qrData = `https://sismadi.github.io/cert/verify.html?id=${found.id}`;
           QRCode.toCanvas(document.getElementById('qrcode'), qrData, function (error) {
             if (error) console.error(error);
