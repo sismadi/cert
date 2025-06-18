@@ -1,7 +1,7 @@
 {
   "@context": "https://w3id.org/openbadges/v2",
   "type": "Assertion",
-  "id": "https://sismadi.com/badges/donatjs-9160.json",
+  "id": "https://sismadi.github.io/cert/badge.json",
   "recipient": {
     "type": "email",
     "hashed": false,
