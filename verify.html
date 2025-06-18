@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Sertifikat</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white p-8 rounded-xl shadow-lg max-w-xl w-full text-center">
+    <h1 class="text-2xl font-bold mb-4">Verifikasi Sertifikat</h1>
+    <div id="result" class="text-lg"></div>
+    <a href="index.html" class="mt-6 inline-block text-blue-600 hover:underline">Kembali ke Galeri</a>
+  </div>
+
+  <script>
+    async function verifikasiSertifikat() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const resultDiv = document.getElementById('result');
+
+      if (!id) {
+        resultDiv.innerHTML = '<p class="text-red-600">ID tidak ditemukan di URL.</p>';
+        return;
+      }
+
+      try {
+        const response = await fetch('data/certificates.json');
+        const data = await response.json();
+        const found = data.find(cert => cert.id === id);
+
+        if (found) {
+          resultDiv.innerHTML = `
+            <p class="text-green-600 font-semibold">✅ Sertifikat valid</p>
+            <p class="mt-2">Nama: <strong>${found.nama}</strong></p>
+            <p>Judul: ${found.judul}</p>
+            <p>Tanggal: ${found.tanggal}</p>
+            <a href="certs/${found.file}" target="_blank" class="block mt-4 text-blue-500 hover:underline">Lihat Sertifikat</a>
+          `;
+        } else {
+          resultDiv.innerHTML = '<p class="text-red-600">❌ Sertifikat tidak ditemukan.</p>';
+        }
+      } catch (error) {
+        resultDiv.innerHTML = '<p class="text-red-600">Terjadi kesalahan saat memuat data.</p>';
+        console.error(error);
+      }
+    }
+
+    verifikasiSertifikat();
+  </script>
+</body>
+</html>
