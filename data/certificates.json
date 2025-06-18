@@ -1,0 +1,16 @@
+[
+  {
+    "id": "abc123",
+    "nama": "John Doe",
+    "judul": "Pelatihan Web Developer",
+    "tanggal": "2025-06-01",
+    "file": "john-doe.pdf"
+  },
+  {
+    "id": "def456",
+    "nama": "Jane Smith",
+    "judul": "UI/UX Design Workshop",
+    "tanggal": "2025-05-20",
+    "file": "jane-smith.png"
+  }
+]
