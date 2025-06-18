@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeri Sertifikat</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body class="bg-gray-50 p-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4 text-center">Galeri Sertifikat</h1>
+
+    <form id="verifyForm" class="mb-6 text-center">
+      <input id="verifyId" type="text" placeholder="Masukkan ID Sertifikat" class="p-2 border rounded-lg w-64" />
+      <button type="submit" class="ml-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Verifikasi</button>
+    </form>
+
+    <div id="verificationResult" class="text-center text-lg font-medium mb-6"></div>
+    <div id="certificates" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+  </div>
+
+  <script>
+    let certData = [];
+
+    async function loadCertificates() {
+      const response = await fetch('data/certificates.json');
+      certData = await response.json();
+      const container = document.getElementById('certificates');
+      container.innerHTML = '';
+
+      certData.forEach(cert => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-4 rounded-xl shadow hover:shadow-lg transition';
+
+        card.innerHTML = `
+          <h2 class="text-xl font-semibold">${cert.nama}</h2>
+          <p class="text-sm text-gray-600">${cert.judul}</p>
+          <p class="text-sm text-gray-400">${cert.tanggal}</p>
+          <a href="certs/${cert.file}" target="_blank" class="mt-2 inline-block text-blue-600 hover:underline">Lihat Sertifikat</a>
+          <p class="text-xs text-gray-500 mt-1">ID: ${cert.id}</p>
+          <div id="qr-${cert.id}" class="mt-2"></div>
+        `;
+
+        container.appendChild(card);
+
+        // Generate QR Code
+        const qrElement = document.getElementById(`qr-${cert.id}`);
+        QRCode.toCanvas(qrElement, window.location.href.split('?')[0] + `?verify=${cert.id}`, function (error) {
+          if (error) console.error(error);
+        });
+      });
+    }
+
+    // Verifikasi berdasarkan ID
+    document.getElementById('verifyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const inputId = document.getElementById('verifyId').value.trim();
+      const result = certData.find(cert => cert.id === inputId);
+      const display = document.getElementById('verificationResult');
+
+      if (result) {
+        display.innerHTML = `✅ Sertifikat ditemukan: <strong>${result.nama}</strong> - ${result.judul}`;
+      } else {
+        display.innerHTML = '❌ Sertifikat tidak ditemukan.';
+      }
+    });
+
+    // Auto-verifikasi jika ada query ?verify=ID
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const verifyId = params.get('verify');
+      if (verifyId) {
+        document.getElementById('verifyId').value = verifyId;
+        document.getElementById('verifyForm').dispatchEvent(new Event('submit'));
+      }
+    });
+
+    loadCertificates();
+  </script>
+</body>
+</html>
